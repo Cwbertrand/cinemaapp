@@ -21,10 +21,11 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-                <a class="nav-link" href="#">Features</a>
-                <a class="nav-link" href="#">Pricing</a>
-                <a class="nav-link disabled">Disabled</a>
+                <a class="nav-link active" href="index.php?action=listFilms">Films <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="index.php?action=listActeurs">Acteurs</a>
+                <a class="nav-link" href="index.php?action=listPersonnages">Personnage</a>
+                <a class="nav-link" href="index.php?action=listGenres">Genres</a>
+                <a class="nav-link" href="index.php?action=listRealisateurs">Realisateur</a>
             </div>
         </div>
     </nav>

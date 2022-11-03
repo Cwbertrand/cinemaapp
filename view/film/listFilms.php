@@ -1,7 +1,6 @@
 <?php ob_start(); //The ob_start() function creates an output buffer?> 
 
-    <form action="./index.php?action=listFilms" method="get">
-        <p>Il y a <?php $requete->rowCount(); ?></p>
+        <h4>Il y a: <b><?php echo $requete->rowCount(); ?></b> </h4>
         <table class="table">
             <thead>
                 <tr>
@@ -18,11 +17,10 @@
                 <?php } ?>
             </tbody>
         </table>
-    </form>
 
 <?php 
     $titre = "Liste des films";
     $titre_secondaire = "Liste des films";
     $buffer = ob_get_clean();
-    require "view/template.php";
+    require "./view/template.php";
 ?>

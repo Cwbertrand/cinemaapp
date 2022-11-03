@@ -14,7 +14,7 @@
         public static function Connection(){
             try {
                 return new \PDO(
-                    "mysql:host=".self::HOST.";dbname=".self::DB.";charset=utf8".self::USER, self::PWD);
+                    "mysql:host=".self::HOST.";dbname=".self::DB.";charset=utf8", self::USER, self::PWD);
             } catch (\Throwable $e) {
                 return $e->getMessage();
             }
