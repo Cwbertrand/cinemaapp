@@ -9,10 +9,14 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($requete->fetchAll() as $genre) { ?>
+                <?php foreach ($requete->fetchAll() as $personnage) { 
+                    if (!$personnage['id_personnage']) {
+                        echo 'aucune information';
+                    }    
+                ?>
                     <tr>
-                        <td><?= $genre['id_personnage'] ?></td>
-                        <td><?= $genre['nom_personnage'] ?></td>
+                        <td><a href="index.php?action=detaillePersonnage&id=<?= $personnage['id_personnage'];?>"><?= $personnage['id_personnage'] ?></a></td>
+                        <td><?= $personnage['nom_personnage'] ?></td>
                     </tr>
                 <?php } ?>
             </tbody>

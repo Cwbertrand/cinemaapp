@@ -11,10 +11,8 @@
         public function listFilms(){
 
             $pdo = Connect::Connection();
-            $requete = $pdo->query("SELECT titre_film, createAt_film FROM film");
-
+            $requete = $pdo->query("SELECT id_film, titre_film, createAt_film FROM film");
             require './view/film/listFilms.php';
-
         }
 
         /**
@@ -22,7 +20,7 @@
         */
         public function listActeurs(){
             $pdo = Connect::Connection();
-            $requete = $pdo->query('SELECT p.nom, p.prenom
+            $requete = $pdo->query('SELECT id_acteur, p.nom, p.prenom
                                     FROM acteur a
                                     INNER JOIN personne p ON p.id_personne = a.id_personne');
 
@@ -34,7 +32,7 @@
         */
         public function listRealisateurs(){
             $pdo = Connect::Connection();
-            $requete = $pdo->query('SELECT p.nom, p.prenom
+            $requete = $pdo->query('SELECT id_realisateur, p.nom, p.prenom
                                     FROM realisateur r
                                     INNER JOIN personne p ON p.id_personne = r.id_personne');
 
@@ -66,14 +64,27 @@
         */
         public function detailleFilm($id){
             $pdo = Connect::Connection();
+            // You perform 2 queries. first to show the description and realisateur and the other the casting
+
+            //the film date, title, producter
             $requete = $pdo->prepare("SELECT titre_film, DATE_FORMAT(createAt_film, '%Y'), 
-                                    TIME_FORMAT(duree_film * 60, '%H:%i'), rating, 
+                                    TIME_FORMAT(duree_film, '%H:%i') AS duree, rating, 
                                     p.nom, p.prenom
                                     FROM film f
                                     INNER JOIN realisateur r ON r.id_realisateur = f.id_realisateur
                                     INNER JOIN personne p ON p.id_personne = r.id_personne
                                     WHERE id_film = :id");
             $requete->execute(['id' => $id]);
+
+            //the film casting
+            $casting = $pdo->prepare("SELECT p.nom, p.prenom, p.sexe, titre_film, nom_personnage
+                                    FROM casting c
+                                    INNER JOIN film f ON f.id_film = c.id_film
+                                    INNER JOIN personnage pe ON pe.id_personnage = c.id_personnage
+                                    INNER JOIN personne p ON p.id_personne = c.id_acteur
+                                    WHERE c.id_film = :id");
+            $casting->execute(['id' => $id]);
+
             require './view/film/detailleFilm.php';
             
         }
@@ -138,6 +149,5 @@
             require './view/personnage/detaillePersonnage.php';
             
         }
-
         
     }
