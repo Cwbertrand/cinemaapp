@@ -26,6 +26,10 @@ if(isset($_GET['action'])) {
         case 'detailleFilm': 
             $ctrlCinema->detailleFilm($id);
         break;
+        //Ajouter un realisateur
+        case 'addFilm': 
+            $ctrlCinema->addFilm();
+        break;
         
         //// ACTEUR /////
         //la liste des acteurs
@@ -35,6 +39,10 @@ if(isset($_GET['action'])) {
         //le détail d'un acteur (infos + liste de ses films / rôles)
         case 'detailleActeur': 
             $ctrlCinema->detailleActeur($id);
+        break;
+        //Ajouter un realisateur
+        case 'addActeur': 
+            $ctrlCinema->addActeur();
         break;
 
         //// Realisateur ////
@@ -46,6 +54,10 @@ if(isset($_GET['action'])) {
         case 'detailleRealisateur': 
             $ctrlCinema->detailleRealisateur($id);
         break;
+        //Ajouter un realisateur
+        case 'addRealisateur': 
+            $ctrlCinema->addRealisateur();
+        break;
 
         //// Genres ////
         //la liste des Genres
@@ -56,6 +68,10 @@ if(isset($_GET['action'])) {
         case 'detailleGenre': 
             $ctrlCinema->detailleGenre($id);
         break;
+        //Ajouter un Personnage
+        case 'addGenre': 
+            $ctrlCinema->addGenre();
+        break;
         
         //// Personnage ////
         //la liste des Personnages
@@ -65,6 +81,10 @@ if(isset($_GET['action'])) {
         // le détail d'un rôle (liste des acteurs qui ont joué un rôle précis : Batman, James Bond, etc)
         case 'detaillePersonnage': 
             $ctrlCinema->detaillePersonnage($id);
+        break;
+        //Ajouter un Personnage
+        case 'addPersonnage': 
+            $ctrlCinema->addPersonnage();
         break;
     }
 }

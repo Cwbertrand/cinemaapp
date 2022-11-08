@@ -1,6 +1,9 @@
 <?php ob_start(); //The ob_start() function creates an output buffer?> 
 
-        <h4>Il y a: <b><?php echo $requete->rowCount(); ?></b> </h4>
+        <div class="container d-flex justify-content-between">
+            <h4>Il y a: <b><?php echo $requete->rowCount(); ?></b> </h4>
+            <a href="index.php?action=addActeur" class="btn btn-primary">Ajouter le Acteur</a>
+        </div>
         <table class="table">
             <thead>
                 <tr>
